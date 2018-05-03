@@ -20,6 +20,9 @@ $ git clone  https://github.com/repo.git
 
  open browser  http://localhost:3001/
 
+ username : admin
+ 
+ password : admin
 
 #Uses
 
