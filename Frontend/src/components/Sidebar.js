@@ -51,7 +51,9 @@ class SideBar extends Component {
                 <MenuItem key={index} onClick={this.changeRoute.bind(this, menu)}>{menu.title}</MenuItem>
             )}
         </Drawer>
+        <div className="fixedbar">
         <AppBar
+          className	="appbar"
           title={this.state.title || 'Home'}
           onLeftIconButtonClick={e=>this.setState({open:!this.state.open})}
           iconElementLeft={this.state.open?<IconButton><NavigationClose /></IconButton>:null}
@@ -61,6 +63,7 @@ class SideBar extends Component {
             this.props.history.replace('/');
           }} />}
         />
+        </div>
         </div>
     );
   }

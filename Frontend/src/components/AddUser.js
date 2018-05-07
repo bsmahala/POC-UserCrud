@@ -19,7 +19,7 @@ import { Link } from 'react-router-dom';
 // skill component to make dynamic component
 const renderSkills = ({fields, meta: {error, submitFailed}}) => (
     <div>
-        <RaisedButton label="Add Skill"  onClick={() => fields.push({})} />
+        <RaisedButton label="Add Skill" primary={true}  onClick={() => fields.push({})} />
        {fields.length > 0 ? 
        <Table selectable={false}>
        <TableHeader displaySelectAll={false} adjustForCheckbox={false} >
@@ -56,7 +56,7 @@ const renderSkills = ({fields, meta: {error, submitFailed}}) => (
             </TableRowColumn>
             <TableRowColumn>
             <IconButton touch={true} onClick={() => fields.remove(index)}>
-            <FontIcon className="fa fa-remove" color={true ?'#e02222': '#00bcd4' }/>
+            <FontIcon className="fa fa-remove" color='#e02222' />
         </IconButton></TableRowColumn>
             </TableRow>
       ))}
@@ -95,16 +95,17 @@ class AddUser extends React.Component {
   }
 //submit add user data
   submitForm(data) {
-      const { reset } = this.props;
+      const { reset, history } = this.props;
       this.props.addUpdateUser(data, ()=>{
            alert('datasave successfully')
-            reset();
+           reset();
+           history.push('/admin')
       });
   }
 
   render() {
 
-    const { handleSubmit } = this.props;
+    const { handleSubmit, match } = this.props;
     return (
         <div>
          <form onSubmit={handleSubmit(this.submitForm.bind(this))}>
@@ -131,11 +132,11 @@ class AddUser extends React.Component {
             <br/>
             <br/>
             <FieldArray name="skills" component={renderSkills} />
-            <br/>
-            <RaisedButton type="submit" label="Save User" primary={true} />
-            <br/>
-            <br/>
-            <Link to={`/admin/`}><RaisedButton label="User List" primary={true} /></Link>
+            
+            <div className="btncontainer">
+                <RaisedButton type="submit" label={ match.params.id?'Update User' : 'Add User'} primary={true} />
+                <Link to={`/admin/`}><RaisedButton label="User List" primary={true} /></Link>
+            </div>
             </form>
         </div>
     );

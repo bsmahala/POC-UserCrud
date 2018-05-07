@@ -17,8 +17,10 @@ class App extends Component {
   render() {
     return (
       <Provider store={store} >
-        <MuiThemeProvider>              
-            <Route  />        
+        <MuiThemeProvider>
+          <div className="container">
+          <Route />        
+          </div>
         </MuiThemeProvider>
       </Provider>
     );

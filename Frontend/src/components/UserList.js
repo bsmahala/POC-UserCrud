@@ -37,7 +37,7 @@ const UserListComponent = ({users=[], deleteUser, edit}) => (
             <TableRowColumn>{row.state}</TableRowColumn>
             <TableRowColumn>
               <Link to={`/admin/adduser/${row.id}`}><IconButton touch={true}>
-              <FontIcon className="fa fa-edit" color='#e02222'/>
+              <FontIcon className="fa fa-edit" color='rgb(0, 188, 212)'/>
           </IconButton></Link>
           <IconButton touch={true} onClick={e=>deleteUser(row)}>
               <FontIcon className="fa fa-remove" color='#e02222'/>
@@ -81,10 +81,12 @@ class UserList extends React.Component {
 
   render() {
     return (
-      <div>
-        <Link to={`/admin/adduser`}><RaisedButton label="Add User" primary={true} /></Link>
+      <div style={{marginTop: '0px'}}>
+      <div className="search-box">
       <Field name="search" label="Search Name" component={Input} onChange={(element,searchKey)=>this.setState({searchKey :searchKey.toLowerCase()})}  />
+      </div>
       <UserListComponent users={this.searchResult()} deleteUser={this.deleteUser.bind(this)} />
+      <Link to={`/admin/adduser`}><RaisedButton label="Add User" primary={true} /></Link>
       </div>
     );
   }

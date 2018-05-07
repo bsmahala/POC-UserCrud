@@ -1,12 +1,12 @@
 var token = '';
 
 // get token
-module.export.getToken =  function(){
+module.exports.getToken =  function(){
     return token;
 }
 
 // set token
-module.export.setToken = function(data){
+module.exports.setToken = function(data){
     token = data;
     return token;
 }

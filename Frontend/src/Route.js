@@ -16,12 +16,14 @@ import { getToken } from './utility/localStorageUtility';
 const AdminRoute = (props) => 
 <div>
     <SideBarTitleBar {...props} />
-    <Switch>
+    <div style={{paddingTop: '60px'}}>
+    <Switch >
             <Route path={props.match.url + '/adduser'} exact component={AddUser} />   
             <Route path={props.match.url + '/adduser/:id'} exact component={AddUser} />
             <Route path={props.match.url + '/home'} exact component={UserList} />
             <Redirect to={props.match.url + '/home'} />
     </Switch>
+    </div>
 </div>;
 
 // defined root route
